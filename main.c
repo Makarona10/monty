@@ -21,7 +21,7 @@ int main (int argc, char **argv)
 	stack_t *stack = NULL;
 	char buffer[1024];
 
-	if (argc < 2)
+	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
