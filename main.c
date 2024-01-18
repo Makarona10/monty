@@ -14,11 +14,11 @@ pub_t pub = {NULL, NULL, NULL, 0};
 
 int main (int argc, char **argv)
 {
-	FILE *f;
+	FILE* f;
 	unsigned int line = 0;
 	size_t s = 1024;
-	char *fline = NULL;
-	stack_t *stack = NULL;
+	char* fline = NULL;
+	stack_t* stack = NULL;
 	char buffer[1024];
 
 	if (argc != 2)
@@ -43,6 +43,6 @@ int main (int argc, char **argv)
 				exit(EXIT_FAILURE);
 			}
 	}
-	/*fclose(f);*/
+	fclose(f);
 	return (0);
 }
