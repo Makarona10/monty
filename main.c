@@ -16,10 +16,11 @@ int main (int argc, char **argv)
 {
 	FILE *f;
 	unsigned int line = 0;
+	size_t s = 0;
 	char *fline = NULL;
 	stack_t *stack = NULL;
 
-	if (argc  2)
+	if (argc < 2)
 	{
 		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
@@ -31,7 +32,7 @@ int main (int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	pub.f = f;
-	while (fgets(fline, sizeof(line), f))
+	while (fgets(fline, sizeof(s), f))
 	{
 		line++;
 		if (fline)
