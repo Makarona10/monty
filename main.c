@@ -19,7 +19,7 @@ int main (int argc, char **argv)
 	char *fline = NULL;
 	stack_t *stack = NULL;
 
-	if (argc != 2)
+	if (argc  2)
 	{
 		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
