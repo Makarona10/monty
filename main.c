@@ -14,12 +14,11 @@ pub_t pub = {NULL, NULL, NULL, 0};
 
 int main (int argc, char **argv)
 {
-	FILE* f;
-	unsigned int line = 0;
-	size_t s = 1024;
 	char* fline = NULL;
+	FILE* f;
+	size_t s = 0;
 	stack_t* stack = NULL;
-	char buffer[1024];
+	unsigned int line = 0;
 
 	if (argc != 2)
 	{
@@ -33,7 +32,7 @@ int main (int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	pub.f = f;
-	while ((fline = fgets(buffer, s, f)))
+	do
 	{
 		line++;
 		if (fline)
@@ -42,7 +41,7 @@ int main (int argc, char **argv)
 				fclose(f);
 				exit(EXIT_FAILURE);
 			}
-	}
+	} while (getline(&fline, &s, f));
 	fclose(f);
 	return (0);
 }
