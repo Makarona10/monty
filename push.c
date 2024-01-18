@@ -41,5 +41,6 @@ void _push(stack_t** head, unsigned int lineNum)
 	if (!(pub.flag))
 		toStack((*head), n);
 	else
-		;
+	{
+	};
 }

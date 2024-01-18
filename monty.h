@@ -17,8 +17,6 @@
  * for stack, queues, LIFO, FIFO
 */
 
-int element = 0;
-
 typedef struct stack_s
 {
 	int n;
@@ -64,9 +62,9 @@ extern pub_t pub;
 
 instruction_t *op_array();
 void toStack(stack_t* s_head, int n);
-void _push(stack_t** head, size_t lineNum);
-int perform_op(stack_t* stack, size_t lineNum, char* line);
-void _pall(stack_t** head, size_t lineNum);
+void _push(stack_t** head, unsigned int lineNum);
+int perform_op(stack_t* stack, unsigned int lineNum, char* line);
+void _pall(stack_t** head, unsigned int lineNum);
 void _pop(stack_t** head, unsigned int lineNum);
 void pint(stack_t** head, unsigned int lineNum);
 

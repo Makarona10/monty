@@ -12,7 +12,7 @@
  * Return: 1 when succeeds, 0 when fails
 */
 
-int perform_op(stack_t *stack, size_t lineNum, char *line)
+int perform_op(stack_t *stack, unsigned int lineNum, char *line)
 {
 	instruction_t *operate = op_array();
 	char *operation;
@@ -35,7 +35,7 @@ int perform_op(stack_t *stack, size_t lineNum, char *line)
 		}
 	}
 	if (x == 4)
-		fprintf(stderr, "L%lu: unknown instruction %s\n", lineNum, operation);
+		fprintf(stderr, "L%u: unknown instruction %s\n", lineNum, operation);
 
 	return (0);
 }

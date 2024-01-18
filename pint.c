@@ -1,6 +1,7 @@
 #include "monty.h"
 
-void pint(stack_t** head, size_t lineNum)
+void pint(stack_t** head, unsigned int lineNum)
 {
-
-};
+	(void)(lineNum);
+	(void)(head);
+}

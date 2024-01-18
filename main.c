@@ -15,9 +15,9 @@ pub_t pub = {NULL, NULL, NULL, 0};
 int main (int argc, char **argv)
 {
 	FILE *f;
-	size_t count;
-	char *fline;
-	stack_t *stack;
+	unsigned int line = 0;
+	char *fline = NULL;
+	stack_t *stack = NULL;
 
 	if (argc < 2)
 	{
@@ -30,14 +30,14 @@ int main (int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	pub->file = f;
+	pub.f = f;
 	while (fgets(fline, sizeof(line), f))
 	{
-		count++;
+		line++;
 		if (fline)
-			if (!perform_op(stack, count, fline))
+			if (!perform_op(stack, line, fline))
 			{
-				free(fline)
+				free(fline);
 				fclose(f);
 				exit(EXIT_FAILURE);
 			}
