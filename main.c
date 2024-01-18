@@ -34,10 +34,7 @@ int main (int argc, char **argv)
 	pub.f = f;
 	while (getline(&fline, &s, f))
 	{
-		printf("-%s-\n", fline);
 		line++;
-		printf("Test\n");
-		pub.line = fline;
 		if (fline)
 			if (!perform_op(stack, line, fline))
 			{

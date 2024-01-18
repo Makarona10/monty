@@ -27,7 +27,6 @@ int perform_op(stack_t* stack, unsigned int lineNum, char* line)
 	if (operation && operation[0] == '#')
 		return (0);
 	pub.n = strtok(NULL, " \n\t");
-	printf("iii %s iii\n", pub.n);
 	x = 0;
 	while (x < 4)
 	{
