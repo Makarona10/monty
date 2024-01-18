@@ -43,6 +43,6 @@ int main (int argc, char **argv)
 				exit(EXIT_FAILURE);
 			}
 	}
-	fclose(f);
+	/*fclose(f);*/
 	return (0);
 }
