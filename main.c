@@ -45,5 +45,5 @@ int main (int argc, char **argv)
 		free(fline);
 	}
 	fclose(f);
-	return (1);
+	return (0);
 }

@@ -31,7 +31,7 @@ int perform_op(stack_t *stack, unsigned int lineNum, char *line)
 			if (!strcmp(operate[x].opcode, operation))
 			{
 				operate[x].f(&stack, lineNum);
-				return (1);
+				return (0);
 			}
 			x++;
 		}
@@ -39,5 +39,5 @@ int perform_op(stack_t *stack, unsigned int lineNum, char *line)
 	if (x == 4)
 		fprintf(stderr, "L%u: unknown instruction %s\n", lineNum, operation);
 
-	return (0);
+	return (1);
 }
