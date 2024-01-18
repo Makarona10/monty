@@ -18,6 +18,8 @@ int perform_op(stack_t *stack, unsigned int lineNum, char *line)
 	char *operation;
 	size_t x;
 
+	printf("%s\n", operate[0].opcode);
+
 	operation = strtok(line, "\n\t");
 	pub.n = strtok(NULL, "\n\t");
 
