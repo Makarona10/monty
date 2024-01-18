@@ -22,7 +22,8 @@ int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 		{"pint", pint},
 		{"pop", S_pop},
 		{"swap", sswap},
-		{"add", adds}
+		{"add", adds},
+		{"nop", nopp}
 	};
 
 	operation = strtok(line, " \n\t");
@@ -30,7 +31,7 @@ int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 		return (0);
 	pub.n = strtok(NULL, " \n\t");
 	x = 0;
-	while (operation && (x < 6))
+	while (operation && (x < 7))
 	{
 		if (!strcmp(operate[x].opcode, operation))
 		{
@@ -40,7 +41,7 @@ int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 		x++;
 	}
 
-	if (operation && (x == 6))
+	if (operation && (x == 7))
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", lineNum, operation);
 		fclose(f);

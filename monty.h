@@ -71,5 +71,6 @@ void freeDS(stack_t* dsHead);
 void S_pop(stack_t** s_head, unsigned int lineNum);
 void sswap(stack_t** S_head, unsigned int lineNum);
 void adds(stack_t** S_head, unsigned int lineNum);
+void nopp(stack_t** s_head, unsigned int lineNum);
 
 #endif
