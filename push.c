@@ -37,8 +37,12 @@ void _push(stack_t** head, unsigned int lineNum)
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(pub.n);
-	if (!(pub.flag))
+	if ((pub.flag) == 0)
+	{
+		for (int r = 0; pub.n[r]; r++)
+			printf("%d\n", pub.n[r]);
 		toStack((*head), n);
+	}
 	else
 	{
 	};

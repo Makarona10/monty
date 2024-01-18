@@ -2,15 +2,16 @@
 
 void _pall(stack_t **head, unsigned int lineNum)
 {
-	stack_t *h;
 	(void)lineNum;
+	stack_t *s_h;
 
-	h = *head;
-	if (h == NULL)
+	s_h = *head;
+	if (s_h == NULL)
 		return;
-	while (h)
+	puts("PALLL");
+	while (s_h)
 	{
-		printf("%d\n", h->n);
-		h = h->next;
+		printf("%d\n", s_h->n);
+		s_h = s_h->next;
 	}
 }

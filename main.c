@@ -36,7 +36,7 @@ int main (int argc, char **argv)
 	{
 		line++;
 		if (fline)
-			if (!perform_op(stack, line, fline))
+			if (perform_op(stack, line, fline))
 			{
 				free(fline);
 				fclose(f);
