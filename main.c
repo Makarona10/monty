@@ -20,7 +20,7 @@ int main (int argc, char **argv)
 	char *fline = NULL;
 	stack_t *stack = NULL;
 
-	if (argc != 2)
+	if (argc < 2)
 	{
 		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
@@ -32,9 +32,12 @@ int main (int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	pub.f = f;
-	while (fgets(fline, sizeof(s), f))
+	while (getline(&fline, &s, f))
 	{
+		printf("-%s-\n", fline);
 		line++;
+		printf("Test\n");
+		pub.line = fline;
 		if (fline)
 			if (!perform_op(stack, line, fline))
 			{

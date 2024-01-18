@@ -1,7 +1,16 @@
 #include "monty.h"
 
-void _pall(stack_t** head, unsigned int lineNum)
+void _pall(stack_t **head, unsigned int lineNum)
 {
-	(void)(lineNum);
-	(void)(head);
+	stack_t *h;
+	(void)lineNum;
+
+	h = *head;
+	if (h == NULL)
+		return;
+	while (h)
+	{
+		printf("%d\n", h->n);
+		h = h->next;
+	}
 }
