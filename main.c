@@ -16,9 +16,10 @@ int main (int argc, char **argv)
 {
 	FILE *f;
 	unsigned int line = 0;
-	size_t s = 0;
+	size_t s = 1024;
 	char *fline = NULL;
 	stack_t *stack = NULL;
+	char buffer[1024];
 
 	if (argc < 2)
 	{
@@ -32,17 +33,15 @@ int main (int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	pub.f = f;
-	while (getline(&fline, &s, f))
+	while ((fline = fgets(buffer, s, f)))
 	{
 		line++;
 		if (fline)
-			if (perform_op(stack, line, fline))
+			if (perform_op(&stack, line, fline))
 			{
-				free(fline);
 				fclose(f);
 				exit(EXIT_FAILURE);
 			}
-		free(fline);
 	}
 	fclose(f);
 	return (0);

@@ -12,7 +12,7 @@
  * Return: 1 when succeeds, 0 when fails
 */
 
-int perform_op(stack_t* stack, unsigned int lineNum, char* line)
+int perform_op(stack_t** stack, unsigned int lineNum, char* line)
 {
 	char* operation;
 	size_t x;
@@ -33,7 +33,8 @@ int perform_op(stack_t* stack, unsigned int lineNum, char* line)
 	{
 		if (!strcmp(operate[x].opcode, operation))
 		{
-			operate[x].f(&stack, lineNum);
+			/*printf("%s\n", operate[x].opcode);*/
+			operate[x].f(stack, lineNum);
 			return (0);
 		}
 		x++;

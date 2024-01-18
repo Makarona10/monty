@@ -10,7 +10,7 @@
  * Return: void
 */
 
-void toStack(stack_t *s_head, int n)
+void toStack(stack_t **s_head, int n)
 {
 	stack_t *nnode = malloc(sizeof(stack_t));
 
@@ -22,10 +22,10 @@ void toStack(stack_t *s_head, int n)
 	nnode->n = n;
 	nnode->next = NULL;
 	nnode->prev = NULL;
-	if (s_head)
-		s_head->prev = nnode;
+	if (*s_head)
+		(*s_head)->prev = nnode;
 
-	nnode->next = s_head;
-	s_head = nnode;
-	puts("done");
+	nnode->next = (*s_head);
+	(*s_head) = nnode;
+	/*puts("done");*/
 }

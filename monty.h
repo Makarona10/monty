@@ -3,9 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
 #include <unistd.h>
-#include <stdarg.h>
+#include <fcntl.h>
 #include <string.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -61,9 +63,9 @@ typedef struct pub_s
 extern pub_t pub;
 
 instruction_t *op_array();
-void toStack(stack_t* s_head, int n);
+void toStack(stack_t** s_head, int n);
 void _push(stack_t** head, unsigned int lineNum);
-int perform_op(stack_t* stack, unsigned int lineNum, char* line);
+int perform_op(stack_t** stack, unsigned int lineNum, char* line);
 void _pall(stack_t** head, unsigned int lineNum);
 void _pop(stack_t** head, unsigned int lineNum);
 void pint(stack_t** head, unsigned int lineNum);
