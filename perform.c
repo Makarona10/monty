@@ -19,9 +19,8 @@ int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 	instruction_t operate[] = {
 		{"push", _push},
 		{"pall", _pall},
-		{"pop", _pop},
 		{"pint", pint},
-		{"pop", S_pop},
+		{"pop", S_pop}
 	};
 
 	operation = strtok(line, " \n\t");
@@ -29,7 +28,7 @@ int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 		return (0);
 	pub.n = strtok(NULL, " \n\t");
 	x = 0;
-	while (operation && (x < 5))
+	while (operation && (x < 4))
 	{
 		if (!strcmp(operate[x].opcode, operation))
 		{
@@ -39,7 +38,7 @@ int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 		x++;
 	}
 
-	if (operation && (x == 5))
+	if (operation && (x == 4))
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", lineNum, operation);
 		fclose(f);

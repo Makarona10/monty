@@ -12,7 +12,7 @@ void S_pop(stack_t** s_head, unsigned int lineNum)
 {
 	stack_t* iter;
 
-	if (*s_head == NULL)
+	if (!(*s_head))
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", lineNum);
 		fclose(pub.f);
