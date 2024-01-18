@@ -23,10 +23,10 @@ int perform_op(stack_t** stack, unsigned int lineNum, char* line)
 		{"pint", pint}
 	};
 
-	operation = strtok(line, " \n\t\r");
+	operation = strtok(line, " \n\t");
 	if (operation && operation[0] == '#')
 		return (0);
-	pub.n = strtok(NULL, " \n\t\r");
+	pub.n = strtok(NULL, " \n\t");
 	/*printf("LINE: %d\n", lineNum);*/
 	x = 0;
 	while (operation && (x < 4))
