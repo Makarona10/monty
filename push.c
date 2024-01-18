@@ -3,14 +3,14 @@
 /**
  * _push - pushes the element into ds
  *
- * @head: A pointer the head of ds
+ * @ds: A pointer the head of ds
  *
  * @lineNum: The line number in monty file
  *
  * Return: void
 */
 
-void _push(stack_t** head, unsigned int lineNum)
+void _push(stack_t** ds, unsigned int lineNum)
 {
 	int x, n;
 	x = 0;
@@ -23,8 +23,9 @@ void _push(stack_t** head, unsigned int lineNum)
 			if (pub.n[x] < 48 || pub.n[x] > 57)
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", lineNum);
-				free(pub.line);
 				fclose(pub.f);
+				free(pub.line);
+				freeDS(*ds);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -34,12 +35,13 @@ void _push(stack_t** head, unsigned int lineNum)
 		fprintf(stderr, "L%u: usage: push integer\n", lineNum);
 		free(pub.line);
 		fclose(pub.f);
+		freeDS(*ds);
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(pub.n);
 	if ((pub.flag) == 0)
 	{
-		toStack(head, n);
+		toStack(ds, n);
 	}
 	else
 	{

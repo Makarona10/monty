@@ -12,7 +12,7 @@
  * Return: 1 when succeeds, 0 when fails
 */
 
-int perform_op(stack_t** stack, unsigned int lineNum, char* line)
+int perform_op(stack_t** ds, unsigned int lineNum, char* line, FILE *f)
 {
 	char* operation;
 	size_t x;
@@ -32,14 +32,19 @@ int perform_op(stack_t** stack, unsigned int lineNum, char* line)
 	{
 		if (!strcmp(operate[x].opcode, operation))
 		{
-			operate[x].f(stack, lineNum);
+			operate[x].f(ds, lineNum);
 			return (0);
 		}
 		x++;
 	}
 
-	if (x == 4)
-		fprintf(stderr, "L%u: unknown instruction %s\n", lineNum, operation);
-
+	if (operation && (x == 4))
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", lineNum, operation);
+		fclose(f);
+		free(line);
+		freeDS(*ds);
+		exit(EXIT_FAILURE);
+	}
 	return (1);
 }

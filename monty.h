@@ -65,10 +65,11 @@ extern pub_t pub;
 instruction_t *op_array();
 void toStack(stack_t** s_head, int n);
 void _push(stack_t** head, unsigned int lineNum);
-int perform_op(stack_t** stack, unsigned int lineNum, char* line);
+int perform_op(stack_t** stack, unsigned int lineNum, char* line, FILE* f);
 void _pall(stack_t** head, unsigned int lineNum);
 void _pop(stack_t** head, unsigned int lineNum);
 void pint(stack_t** head, unsigned int lineNum);
+void freeDS(stack_t* dsHead);
 
 
 #endif

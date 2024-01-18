@@ -10,14 +10,15 @@
  * Return: if success 0, else it exits with the error number.
 */
 
-pub_t pub = {NULL, NULL, NULL, 0};
+pub_t pub = { NULL, NULL, NULL, 0 };
 
-int main (int argc, char **argv)
+int main(int argc, char** argv)
 {
 	char* fline = NULL;
 	FILE* f;
 	size_t s = 0;
-	stack_t* stack = NULL;
+	int x;
+	stack_t* ds = NULL;
 	unsigned int line = 0;
 
 	if (argc != 2)
@@ -35,13 +36,14 @@ int main (int argc, char **argv)
 	do
 	{
 		line++;
-		if (fline)
-			if (perform_op(&stack, line, fline))
-			{
-				fclose(f);
-				exit(EXIT_FAILURE);
-			}
-	} while (getline(&fline, &s, f));
+		fline = NULL;
+		x = getline(&fline, &s, f);
+		pub.line = fline;
+		if (x > 0)
+			perform_op(&ds, line, fline, f);
+		free(fline);
+	} while (x > 0);
+	freeDS(ds);
 	fclose(f);
 	return (0);
 }
