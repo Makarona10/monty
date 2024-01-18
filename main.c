@@ -1,45 +1,49 @@
 #include "monty.h"
-bus_t bus = {NULL, NULL, NULL, 0};
+
 /**
-* main - monty code interpreter
-* @argc: number of arguments
-* @argv: monty file location
-* Return: 0 on success
+ * main - a program to operate stack and queues operations with monty bytecode
+ *
+ * @argc: number of the program arguments.
+ *
+ * @argv: The monty file location.
+ *
+ * Return: if success 0, else it exits with the error number.
 */
-int main(int argc, char *argv[])
+
+pub_t pub = {NULL, NULL, NULL, 0};
+
+int main (int argc, char **argv)
 {
-	char *content;
-	FILE *file;
-	size_t size = 0;
-	ssize_t read_line = 1;
+	FILE *f;
+	unsigned int line = 0;
+	size_t s = 0;
+	char *fline = NULL;
 	stack_t *stack = NULL;
-	unsigned int counter = 0;
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file");
 		exit(EXIT_FAILURE);
 	}
-	file = fopen(argv[1], "r");
-	bus.file = file;
-	if (!file)
+	f = fopen(argv[1], "r");
+	if (!f)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	while (read_line > 0)
+	pub.f = f;
+	while (fgets(fline, sizeof(s), f))
 	{
-		content = NULL;
-		read_line = getline(&content, &size, file);
-		bus.content = content;
-		counter++;
-		if (read_line > 0)
-		{
-			execute(content, &stack, counter, file);
-		}
-		free(content);
+		line++;
+		if (fline)
+			if (!perform_op(stack, line, fline))
+			{
+				free(fline);
+				fclose(f);
+				exit(EXIT_FAILURE);
+			}
+		free(fline);
 	}
-	free_stack(stack);
-	fclose(file);
-return (0);
+	fclose(f);
+	return (0);
 }
