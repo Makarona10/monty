@@ -42,21 +42,33 @@ typedef struct instruction_s
 
 /**
  * struct bus_s - variables -args, file, line content
+ * 
  * @arg: value
+ * 
  * @file: pointer to monty file
+ * 
  * @content: line content
- * @lifi: flag change stack <-> queue
- * Description: carries values through the program
- */
+ *
+ * @flag: flag change stack <-> queue
+ * 
+ * Description: Holds the public vars needed
+*/
 typedef struct pub_s
 {
-	char *arg;
-	FILE *file;
+	char *n;
+	FILE *f;
 	char *line;
-	int element;
+	int flag;
 }  pub_t;
-extern pub_t publ;
+extern pub_t pub;
 
 instruction_t *op_array();
+void toStack(stack_t* s_head, int n);
+void _push(stack_t** head, size_t lineNum);
+int perform_op(stack_t* stack, size_t lineNum, char* line);
+void _pall(stack_t** head, size_t lineNum);
+void _pop(stack_t** head, unsigned int lineNum);
+void pint(stack_t** head, unsigned int lineNum);
+
 
 #endif

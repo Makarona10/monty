@@ -1,6 +1,4 @@
-#include <monty.h>
-
-
+#include "monty.h"
 
 /**
  * main - a program to operate stack and queues operations with monty bytecode
@@ -11,6 +9,8 @@
  *
  * Return: if success 0, else it exits with the error number.
 */
+
+pub_t pub = {NULL, NULL, NULL, 0};
 
 int main (int argc, char **argv)
 {
@@ -30,6 +30,7 @@ int main (int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
+	pub->file = f;
 	while (fgets(fline, sizeof(line), f))
 	{
 		count++;
