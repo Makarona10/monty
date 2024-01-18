@@ -27,5 +27,4 @@ void toStack(stack_t **s_head, int n)
 
 	nnode->next = (*s_head);
 	(*s_head) = nnode;
-	/*puts("done");*/
 }
