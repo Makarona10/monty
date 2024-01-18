@@ -21,7 +21,7 @@ void _push(stack_t** head, unsigned int lineNum)
 			x = 1;
 		for (; pub.n[x]; x++)
 		{
-			if (pub.n[x] < 48 && pub.n[x] > 57)
+			if (pub.n[x] < 48 || pub.n[x] > 57)
 			{
 				fprintf(stderr, "L%u: usage: push integer\n", lineNum);
 				free(pub.line);
